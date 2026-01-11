@@ -24,7 +24,7 @@ caddy = ">=2.10.0,<3"
 taplo = ">=0.10.0,<0.11"
 go = ">=1.25.5,<2"
 
-[tool.pixi.target.linux-64.dependencies]
+[tool.pixi.target.osx-arm64.dependencies]
 pixi-pycharm = ">=0.0.10,<0.0.11"
 
 [tool.pixi.target.linux-64.dependencies]
