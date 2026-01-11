@@ -1,6 +1,6 @@
 [project]
 authors = [{ name = "reggie-db", email = "reggie.pierce@databricks.com" }]
-dependencies = []
+dependencies = ['uv']
 name = "reggie-app-runner"
 requires-python = ">= 3.11"
 version = "0.1.0"
