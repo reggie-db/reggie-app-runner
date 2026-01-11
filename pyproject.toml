@@ -20,10 +20,12 @@ platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
 reggie_app_runner = { path = ".", editable = true }
 
 [tool.pixi.dependencies]
-pixi-pycharm = ">=0.0.10,<0.0.11"
 caddy = ">=2.10.0,<3"
 taplo = ">=0.10.0,<0.11"
 go = ">=1.25.5,<2"
+
+[tool.pixi.target.linux-64.dependencies]
+pixi-pycharm = ">=0.0.10,<0.0.11"
 
 [tool.pixi.target.linux-64.dependencies]
 tini = ">=0.19.0,<0.20"
