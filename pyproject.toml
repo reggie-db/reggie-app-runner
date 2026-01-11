@@ -13,7 +13,7 @@ build-backend = "uv_build"
 dev = ["lfp-build @ git+https://github.com/regbo/lfp-build-py.git", "pytest"]
 
 [tool.pixi.activation]
-env = { GOBIN = "$PIXI_PROJECT_ROOT/.pixi/go/bin" }
+env = { GOBIN = "$PIXI_PROJECT_ROOT/.pixi/go/bin", CGO_ENABLED = "0" }
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]

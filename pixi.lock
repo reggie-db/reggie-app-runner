@@ -954,7 +954,7 @@ packages:
 - pypi: ./
   name: reggie-app-runner
   version: 0.1.0
-  sha256: 950b46132e14607e0c692e3e61acc39de7224f81588efb7d21ba4cdc5b784197
+  sha256: 28c2706f07174f00bde7741240594005496fbc0c9e3bcd5d9df58fda5c094d86
   requires_dist:
   - uv
   requires_python: '>=3.11'
