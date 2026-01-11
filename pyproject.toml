@@ -1,0 +1,28 @@
+[project]
+authors = [{ name = "reggie-db", email = "reggie.pierce@databricks.com" }]
+dependencies = []
+name = "reggie-app-runner"
+requires-python = ">= 3.11"
+version = "0.1.0"
+
+[build-system]
+requires = ["uv_build>=0.9.6"]
+build-backend = "uv_build"
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[tool.pixi.pypi-dependencies]
+reggie_app_runner = { path = ".", editable = true }
+
+[tool.pixi.dependencies]
+pixi-pycharm = ">=0.0.10,<0.0.11"
+caddy = ">=2.10.0,<3"
+
+[tool.pixi.target.linux-64.dependencies]
+tini = ">=0.19.0,<0.20"
+
+[tool.pixi.tasks]
+uvr = "uv run"
+uvm = "uv run -m"

@@ -1,0 +1,20 @@
+version = 1
+revision = 3
+requires-python = ">=3.11"
+
+[[package]]
+name = "dumb-init"
+version = "1.2.5.post1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3d/a6/73c6e478115f98f5778e8b7808dc59d0985eae178b4c38da72968887a13e/dumb-init-1.2.5.post1.tar.gz", hash = "sha256:6510538a975e0de10658b0210ec2ad62dc3617543af5c6fbd29a3af111eae981", size = 11531, upload-time = "2022-04-26T17:47:50.804Z" }
+
+[[package]]
+name = "reggie-app-runner"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "dumb-init", marker = "sys_platform == 'darwin'" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "dumb-init", marker = "sys_platform == 'darwin'" }]
