@@ -11,7 +11,7 @@ build-backend = "uv_build"
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
-platforms = ["osx-arm64", "linux-64"]
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
 
 [tool.pixi.pypi-dependencies]
 reggie_app_runner = { path = ".", editable = true }
