@@ -12,6 +12,9 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = ["lfp-build @ git+https://github.com/regbo/lfp-build-py.git", "pytest"]
 
+[tool.pixi.activation]
+env = { GOBIN = "$PIXI_PROJECT_ROOT/.pixi/go/bin" }
+
 [tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
@@ -33,3 +36,17 @@ tini = ">=0.19.0,<0.20"
 [tool.pixi.tasks]
 uvr = "uv run"
 uvm = "uv run -m"
+
+
+[tool.pixi.tasks.install-moley]
+#language=bash
+cmd = """
+go install github.com/stupside/moley@latest && \
+mkdir -p build && \
+"$GOBIN/moley" --version > build/moley.version
+"""
+outputs = ["build/moley.version"]
+
+[tool.pixi.tasks.moley]
+cmd = "$GOBIN/moley"
+depends-on = ["install-moley"]
