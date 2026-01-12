@@ -1,6 +1,6 @@
 [project]
 authors = [{ name = "reggie-db", email = "reggie.pierce@databricks.com" }]
-dependencies = ['uv']
+dependencies = ["giturlparse", "requirements-parser", "lfp-logging @ git+https://github.com/regbo/lfp-logging-py.git"]
 name = "reggie-app-runner"
 requires-python = ">= 3.11"
 version = "0.1.0"
@@ -13,7 +13,7 @@ build-backend = "uv_build"
 dev = ["lfp-build @ git+https://github.com/regbo/lfp-build-py.git", "pytest"]
 
 [tool.pixi.activation]
-env = { GOBIN = "$PIXI_PROJECT_ROOT/.pixi/go/bin", CGO_ENABLED = "0" }
+env = { GOBIN = "$PIXI_PROJECT_ROOT/.pixi/go/bin", PATH = "$GOBIN:$PATH" }
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
@@ -26,6 +26,7 @@ reggie_app_runner = { path = ".", editable = true }
 caddy = ">=2.10.0,<3"
 taplo = ">=0.10.0,<0.11"
 go = ">=1.25.5,<2"
+cloudflare = ">=4.3.1,<5"
 
 [tool.pixi.target.osx-arm64.dependencies]
 pixi-pycharm = ">=0.0.10,<0.0.11"
@@ -36,17 +37,12 @@ tini = ">=0.19.0,<0.20"
 [tool.pixi.tasks]
 uvr = "uv run"
 uvm = "uv run -m"
-
+mole = [{ task = "moley" }]
 
 [tool.pixi.tasks.install-moley]
-#language=bash
-cmd = """
-go install github.com/stupside/moley@latest && \
-mkdir -p build && \
-"$GOBIN/moley" --version > build/moley.version
-"""
-outputs = ["build/moley.version"]
+cmd = ["tasks/go_install.sh", "github.com/stupside/moley@latest", "build/moley"]
+outputs = ["build/moley"]
 
 [tool.pixi.tasks.moley]
-cmd = "$GOBIN/moley"
+cmd = "moley"
 depends-on = ["install-moley"]

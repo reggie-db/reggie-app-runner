@@ -1,0 +1,7 @@
+zone: nectus.io
+apps:
+    - target:
+        port: 8080
+        hostname: localhost
+      expose:
+        subdomain: api
